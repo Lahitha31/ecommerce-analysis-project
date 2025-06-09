@@ -9,25 +9,27 @@ This project analyzes simulated e-commerce order data to generate actionable bus
   - [Monthly Revenue](#monthly-revenue)
   - [Category-wise Sales](#category-wise-sales)
   - [Return Rates](#return-rates)
+  - [Segment-wise Performance](#segment-wise-performance)
+  - [Customer Lifetime Value (CLV)](#customer-lifetime-value-clv)
+  - [Revenue Forecast](#revenue-forecast)
 - [Business Insights](#business-insights)
 - [Next Steps](#next-steps)
 - [License](#license)
 
 ## 📌 Project Description
 
-This repository contains the analysis notebook (`ecommerce_analytics.ipynb`) for a synthetic e-commerce dataset of 10,000+ orders. It walks through the data pipeline from generation to visualization and uncovers key metrics that businesses use to optimize sales, identify trends, and reduce operational issues like high returns.
+This repository contains the analysis notebook (`ecommerce_analytics_clean_final.ipynb`) for a synthetic e-commerce dataset of 10,000+ orders. It walks through a full analytics pipeline: ETL simulation, feature engineering, KPI calculation, visualization, and time-series forecasting — all aligned with real-world data analytics and data engineering practices.
 
 ## ⚙️ Setup Instructions
 
 - **Google Colab (Recommended):**
   - Open [Google Colab](https://colab.research.google.com)
-  - Choose GitHub tab and paste this repo URL
-  - Run the notebook top to bottom — no setup required
+  - Upload the notebook `ecommerce_analytics_clean_final.ipynb`
+  - Run all cells — no installation required
 
 - **Local Setup (Optional):**
   ```bash
-  git clone https://github.com/yourusername/ecommerce-analysis-project.git
-  pip install -r requirements.txt
+  pip install pandas numpy matplotlib plotly statsmodels
   jupyter notebook
   ```
 
@@ -37,7 +39,7 @@ This repository contains the analysis notebook (`ecommerce_analytics.ipynb`) for
 
 ![Monthly Revenue Trend](images/revenue_trend.png)
 
-This line chart shows how revenue changes over time. Seasonal spikes are visible in Q4, reflecting holiday shopping patterns. Tracking monthly trends helps forecast demand and optimize stock.
+Interactive line chart showing monthly revenue patterns by category. Helps detect seasonal trends and plan inventory and marketing efforts.
 
 ---
 
@@ -45,7 +47,7 @@ This line chart shows how revenue changes over time. Seasonal spikes are visible
 
 ![Category Sales](images/category_sales.png)
 
-This bar chart compares total sales across product categories. Electronics and Home categories contribute the most revenue in the current dataset, indicating where marketing and stock should focus.
+Horizontal bar chart comparing average order value across categories. Indicates which product groups generate high-value purchases.
 
 ---
 
@@ -53,25 +55,47 @@ This bar chart compares total sales across product categories. Electronics and H
 
 ![Return Rate](images/return_rate.png)
 
-This visualization highlights return behavior across categories. For example, Apparel shows a significantly higher return rate — consistent with known sizing/fit issues in real-world retail.
+Highlights which categories have high return rates. Useful for identifying product quality issues or user experience friction points.
+
+---
+
+### Segment-wise Performance
+
+Revenue and behavior are compared across simulated customer segments: **Budget**, **Premium**, and **Occasional**. KPIs include:
+- Total Revenue
+- Average Order Value
+- Return Rate
+- Average Customer Lifetime Value (CLV)
+
+---
+
+### Customer Lifetime Value (CLV)
+
+CLV is estimated by simulating repeat purchases. The segment with the highest CLV can guide loyalty programs and targeted campaigns.
+
+---
+
+### Revenue Forecast
+
+Uses ARIMA to forecast revenue for the next 6 months. The model is trained on historical monthly revenue data and visualized alongside real trends.
 
 ---
 
 ## 💡 Business Insights
 
-- **Seasonal Trends:** Sales peaked during the holiday season, supporting increased marketing and inventory allocation around that time.
-- **Category Strength:** A few categories dominate sales, meaning businesses can double down on high performers while improving or phasing out underperformers.
-- **Return Problem Areas:** Return rates were highest in Apparel, suggesting the need for better sizing tools, photos, or quality control.
-- **Data-Driven Value:** The project shows how simple analytics pipelines can lead to real, quantifiable business improvements.
+- **High-Revenue Periods:** Holiday months show spikes in revenue, supporting increased promo budgets during Q4.
+- **Category Optimization:** Electronics and Home & Kitchen outperform others; Apparel has high returns.
+- **Segment Strategy:** Premium customers yield higher CLV. Tailoring experiences for them could boost retention.
+- **Predictive Power:** Time-series forecasting enables proactive planning.
 
 ---
 
 ## 🚀 Next Steps
 
-- Add customer segmentation and demographic layers
-- Implement forecasting models (Prophet, ARIMA)
-- Deploy interactive dashboards (Tableau, Dash)
-- Integrate with external sales APIs or real datasets
+- Add demographics or location-based filtering
+- Enable real-time pipeline using external APIs or batch uploads
+- Deploy visual dashboards via Dash or Tableau Public
+- Train segmentation models using clustering
 
 ---
 
