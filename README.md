@@ -6,7 +6,7 @@ This project explores and analyzes a real-world e-commerce dataset (Brazilian Ol
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 ecommerce-analysis-project/
@@ -26,7 +26,7 @@ ecommerce-analysis-project/
 
 ---
 
-## 🚀 Key Features
+## Key Features
 
 - **End-to-End Pipeline**: Simulates ingestion → transformation → analysis → reporting.
 - **KPI Analysis**: Tracks top categories, payment methods, customer states, and revenue trends.
@@ -36,7 +36,7 @@ ecommerce-analysis-project/
 
 ---
 
-## 🛠 How to Run
+##  How to Run
 
 1. Install requirements:
    ```bash
@@ -55,7 +55,7 @@ ecommerce-analysis-project/
 
 ---
 
-## 📊 Dataset Description
+##  Dataset Description
 
 The dataset contains information about:
 - Orders, Products, Customers, Sellers
@@ -64,7 +64,7 @@ The dataset contains information about:
 
 ---
 
-## ✅ Future Enhancements
+##  Future Enhancements
 
 - Integrate with Apache Airflow for production-grade orchestration
 - Add DB storage support using PostgreSQL
