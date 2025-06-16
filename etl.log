@@ -1,0 +1,36 @@
+2025-06-12 14:09:20,038 - INFO - Starting ETL pipeline
+2025-06-12 14:09:20,039 - ERROR - ETL pipeline failed
+Traceback (most recent call last):
+  File "C:\Users\MSI\Desktop\ecommerce-analysis-project\etl_pipeline.py", line 22, in <module>
+    df = get_clean_data()
+  File "C:\Users\MSI\Desktop\ecommerce-analysis-project\transform\merge_and_clean.py", line 6, in get_clean_data
+    data = load_raw_olist_data()
+  File "C:\Users\MSI\Desktop\ecommerce-analysis-project\ingest\load_raw_data.py", line 6, in load_raw_olist_data
+    "orders": pd.read_csv(base_path + "olist_orders_dataset.csv"),
+              ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1026, in read_csv
+    return _read(filepath_or_buffer, kwds)
+  File "C:\Program Files\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 620, in _read
+    parser = TextFileReader(filepath_or_buffer, **kwds)
+  File "C:\Program Files\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1620, in __init__
+    self._engine = self._make_engine(f, self.engine)
+                   ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "C:\Program Files\Python313\Lib\site-packages\pandas\io\parsers\readers.py", line 1880, in _make_engine
+    self.handles = get_handle(
+                   ~~~~~~~~~~^
+        f,
+        ^^
+    ...<6 lines>...
+        storage_options=self.options.get("storage_options", None),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Program Files\Python313\Lib\site-packages\pandas\io\common.py", line 873, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+FileNotFoundError: [Errno 2] No such file or directory: '../data/raw/olist_orders_dataset.csv'
+2025-06-12 14:13:18,800 - INFO - Starting ETL pipeline
+2025-06-12 14:13:24,589 - INFO - Data processed and saved to data/processed/olist_cleaned_data.csv
