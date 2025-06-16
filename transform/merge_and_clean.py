@@ -14,7 +14,7 @@ def get_clean_data():
 
     df["TotalAmount"] = df["price"] + df["freight_value"]
 
-    # Create the directory if it doesn't exist
+    # Creating the directory
     os.makedirs("data/processed", exist_ok=True)
     df.to_csv("data/processed/olist_cleaned_data.csv", index=False)
 

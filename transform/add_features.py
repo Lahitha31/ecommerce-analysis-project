@@ -1,7 +1,7 @@
 import pandas as pd
 
 def add_features(df):
-    # Convert dates
+    # Converting dates
     df["order_delivered_customer_date"] = pd.to_datetime(df["order_delivered_customer_date"])
     df["order_approved_at"] = pd.to_datetime(df["order_approved_at"])
     df["order_estimated_delivery_date"] = pd.to_datetime(df["order_estimated_delivery_date"])
@@ -12,7 +12,7 @@ def add_features(df):
     # Delay vs estimate (positive = delay, negative = early)
     df["delay_vs_estimate"] = (df["order_delivered_customer_date"] - df["order_estimated_delivery_date"]).dt.days
 
-    # Categorize order value
+    # Categorizing order value
     bins = [0, 50, 150, df["TotalAmount"].max()]
     labels = ['Low', 'Medium', 'High']
     df["order_value_category"] = pd.cut(df["TotalAmount"], bins=bins, labels=labels)
