@@ -16,6 +16,7 @@ ecommerce-analysis-project/
 ├── transform/            # Data cleaning and feature engineering 
 ├── analysis/             # Jupyter notebooks for visual, cohort and kpi analysis
 ├── data/                 #dataset(raw and processed)
+├── git.ignore/           #names of some files that you may ignore
 ├── reporting/            # Output reports and export scripts
 ├── main.py               # Main script to coordinate the pipeline
 ├── etl_pipeline.py       # Command-line ETL entry point
