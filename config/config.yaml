@@ -1,0 +1,8 @@
+paths:
+  raw_data: data/raw/
+  processed_data: data/processed/olist_cleaned_data.csv
+  curated_data: data/curated/
+
+logging:
+  level: INFO
+  file: logs/etl.log
