@@ -16,7 +16,8 @@ df = load_data()
 pages = [
     "Monthly Sales Trends",
     "Product Category Performance",
-    "Delivery Performance vs Reviews"
+    "Delivery Performance vs Reviews",
+    "Customer Churn Prediction"
 ]
 page = st.sidebar.radio("Select Analysis", pages)
 
@@ -53,3 +54,20 @@ elif page == "Delivery Performance vs Reviews":
     sns.boxplot(x="review_score", y="delivery_days", data=delivered, ax=ax)
     ax.set_title("Delivery Days Distribution per Review Score")
     st.pyplot(fig)
+
+
+elif page == "Customer Churn Prediction":
+    st.subheader("Customer Churn Prediction")
+    st.markdown("This section shows churn prediction results based on customer behavior patterns like recency, frequency, and review score.")
+
+    try:
+        churn_df = pd.read_csv("analysis/churn_prediction.csv")
+
+        fig, ax = plt.subplots(figsize=(10, 4))
+        sns.countplot(data=churn_df, x="churn_prediction", palette="Set2", ax=ax)
+        ax.set_title("Churn vs Retained Customers")
+        ax.set_xlabel("Prediction (0 = Retained, 1 = Churn)")
+        ax.set_ylabel("Number of Customers")
+        st.pyplot(fig)
+    except FileNotFoundError:
+        st.warning("Churn prediction file not found. Please run the churn prediction script to generate predictions.")
