@@ -9,7 +9,7 @@ def add_features(df):
     # Delivery time in days
     df["delivery_time_days"] = (df["order_delivered_customer_date"] - df["order_approved_at"]).dt.days
 
-    # Delay vs estimate (positive = delay, negative = early)
+    # Delay vs estimate 
     df["delay_vs_estimate"] = (df["order_delivered_customer_date"] - df["order_estimated_delivery_date"]).dt.days
 
     # Categorizing order value
