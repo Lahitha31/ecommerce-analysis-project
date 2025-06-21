@@ -1,7 +1,10 @@
-paths:
-  raw_data: data/raw/
-  processed_data: data/processed/olist_cleaned_data.csv
+raw_data_path: data/raw
+processed_data_path: data/processed/olist_enhanced_data.csv
 
-logging:
-  level: INFO
-  file: logs/etl.log
+files:
+  orders: olist_orders_dataset.csv.csv
+  order_items: olist_order_items_dataset.csv.csv
+  payments: olist_order_payments_dataset.csv.csv
+  customers: olist_customers_dataset.csv.csv
+  products: olist_products_dataset.csv.csv
+  reviews: olist_order_reviews_dataset.csv.csv

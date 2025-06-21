@@ -1,16 +1,16 @@
 import pandas as pd
+import os
+import yaml
 
-def load_raw_olist_data(base_path="C:/Users/MSI/Desktop/ecommerce-analysis-project/data/raw/"):
+def load_raw_data(config_path="config/config.yaml"):
+    with open(config_path) as f:
+        config = yaml.safe_load(f)
 
+    raw_path = config["raw_data_path"]
+    files = config["files"]
 
-    datasets = {
-        "orders": pd.read_csv(base_path + "olist_orders_dataset.csv"),
-        "order_items": pd.read_csv(base_path + "olist_order_items_dataset.csv"),
-        "payments": pd.read_csv(base_path + "olist_order_payments_dataset.csv"),
-        "products": pd.read_csv(base_path + "olist_products_dataset.csv"),
-        "customers": pd.read_csv(base_path + "olist_customers_dataset.csv"),
-        "reviews": pd.read_csv(base_path + "olist_order_reviews_dataset.csv"),
-        "sellers": pd.read_csv(base_path + "olist_sellers_dataset.csv"),
-        "category_translation": pd.read_csv(base_path + "product_category_name_translation.csv")
-    }
-    return datasets
+    data = {}
+    for key, file in files.items():
+        path = os.path.join(raw_path, file)
+        data[key] = pd.read_csv(path)
+    return data

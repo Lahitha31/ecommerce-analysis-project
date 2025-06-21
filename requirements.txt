@@ -3,7 +3,10 @@ pandas
 numpy
 matplotlib
 plotly
+seaborn
 scikit-learn
+streamlit
+pyymal
 jupyter
 
 

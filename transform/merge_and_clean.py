@@ -1,21 +1,15 @@
-import os
 import pandas as pd
-from ingest.load_raw_data import load_raw_olist_data
 
-def get_clean_data():
-    data = load_raw_olist_data()
+def merge_data(data_dict):
+    df = data_dict["orders"] \
+        .merge(data_dict["order_items"], on="order_id", how="left") \
+        .merge(data_dict["payments"], on="order_id", how="left") \
+        .merge(data_dict["products"], on="product_id", how="left") \
+        .merge(data_dict["customers"], on="customer_id", how="left") \
+        .merge(data_dict["reviews"], on="order_id", how="left")
 
-    df = data["orders"] \
-        .merge(data["order_items"], on="order_id", how="inner") \
-        .merge(data["products"][["product_id", "product_category_name"]], on="product_id", how="left") \
-        .merge(data["category_translation"], on="product_category_name", how="left") \
-        .merge(data["payments"], on="order_id", how="left") \
-        .merge(data["customers"], on="customer_id", how="left")
-
-    df["TotalAmount"] = df["price"] + df["freight_value"]
-
-    # Creating the directory
-    os.makedirs("data/processed", exist_ok=True)
-    df.to_csv("data/processed/olist_cleaned_data.csv", index=False)
+    df["order_purchase_timestamp"] = pd.to_datetime(df["order_purchase_timestamp"])
+    df["order_delivered_customer_date"] = pd.to_datetime(df["order_delivered_customer_date"])
+    df["order_estimated_delivery_date"] = pd.to_datetime(df["order_estimated_delivery_date"])
 
     return df

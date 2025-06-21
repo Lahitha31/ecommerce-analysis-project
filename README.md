@@ -2,7 +2,7 @@
 
 # E-Commerce Data Analysis Project
 
-This project explores and analyzes a real-world e-commerce dataset (Brazilian Olist dataset) using an end-to-end modular pipeline. It focuses on simulating a data engineer's workflow from data ingestion, transformation, KPI reporting, cohort analysis, and dashboard-ready visualizations.
+This project explores and analyzes a real-world e-commerce dataset (Brazilian Olist dataset) using an modular pipeline. It focuses on simulating a data engineer's workflow from data ingestion, transformation, KPI reporting, cohort analysis, and dashboard-ready visualizations.
 
 ---
 
@@ -10,30 +10,37 @@ This project explores and analyzes a real-world e-commerce dataset (Brazilian Ol
 
 ```
 ecommerce-analysis-project/
-│
-├── config/               # Configuration files for pipeline
-├── ingest/               # To ingest raw data
-├── transform/            # Data cleaning and feature engineering 
-├── analysis/             # Jupyter notebooks for visual, cohort and kpi analysis
-├── data/                 #dataset(raw and processed)
-├── gitignore/           #names of some files that you may ignore
-├── reporting/            # Output reports and export scripts
-├── main.py               # Main script to coordinate the pipeline
-├── etl_pipeline.py       # Command-line ETL entry point
-├── etl.log               # ETL entry point status
-├── requirements.txt      # Python dependencies
-└── README.md             # Project documentation
-```
+├── analysis/ # Jupyter notebooks for business analysis
+│ ├── Monthly_sales
+│ ├── Delivery_performance
+│ ├── churn_prediction
+│ └── productcategory_performance
+├── config/
+│ └── config.yaml # Centralized config for paths
+├── data/
+│ ├── raw/ # Original raw CSV files
+│ └── processed/ # Cleaned and transformed datasets
+├── ingest/
+│ └── load_raw_data.py # Reads config and loads raw files
+├── transform/
+│ ├── merge_and_clean.py # Merge, clean, and enhance raw data
+│ └── add_features.py # Feature engineering for analysis
+├── dashboard_app.py # Streamlit dashboard app
+├── etl_pipeline.py # Runs full ETL pipeline
+├── main.py # Main entry point to orchestrate everything
+├── requirements.txt # Project dependencies
+└── README.md
 
 ---
 
 
 ##  Dataset Description
+The dataset is publicly available from Kaggle and includes:
 
-The dataset contains information about:
-- Orders, Products, Customers, Sellers
-- Payments, Reviews, Deliveries
-- Category translation and geography (Brazil)
+- Order details (timestamps, payments, reviews)
+- Customer and seller information
+- Products with category metadata
+- Geolocation data
 
 
 ---
@@ -41,22 +48,22 @@ The dataset contains information about:
 
 ## Technologies Used
 
-- **Python**, **Pandas**, **NumPy**
-- **Matplotlib**, **Plotly**
-- **Statsmodels (ARIMA)**
-- **YAML** for configuration
-- Jupyter Notebooks for analysis
-
+- **Python**, **Pandas**, **NumPy** – ETL and feature engineering
+- **Matplotlib**, **Seaborn**, **Plotly** – Data visualization
+- **Scikit-learn** – KMeans for customer segmentation
+- **Streamlit** – Interactive dashboard
+- **YAML** – Config management
 
 ---
+##  Key Features
 
-## Key Features
-
-- **End-to-End Pipeline**: Simulates ingestion → transformation → analysis → reporting.
-- **KPI Analysis**: Tracks top categories, payment methods, customer states, and revenue trends.
-- **Cohort Analysis**: Understands user retention and lifecycle behavior over time.
-- **Advanced Feature Engineering**: Calculates delivery time, delay, order value category, etc.
-- **Visualizations**: Uses Seaborn, Plotly, and Matplotlib for meaningful business insights.
+-  Modular ETL pipeline with config-driven ingestion and transformation
+-  Trend and performance analysis using Jupyter notebooks
+-  Data cleaning and preprocessing from 9 interconnected CSV files
+-  Product category and monthly sales performance tracking
+-  Delivery time analysis and its impact on customer satisfaction
+-  Interactive dashboard using Streamlit
+-  Business-friendly insights presented with visual storytelling
 
 ---
 
@@ -78,27 +85,18 @@ The dataset contains information about:
    - `analysis/visual_analysis.ipynb`
    - `analysis/cohort_analysis.ipynb`
 
+4. Launch the Streamlit Dashboard
+```bash
+   streamlit run dashboard_app.py
 ---
-
 
 
 ## Business Insights
-
-- **Customer Retention:** Only **42%** of new users returned within 3 months – highlighting a need for retention efforts.
-- **Delivery Delays:** **21%** of orders were late; Electronics averaged a **+4.3-day delay**.
-- **Return Rate:** **9.2%** overall; highest in **Fashion & Accessories**.
-- **Revenue Distribution:** Top 25% of customers contributed to **67%** of revenue.
-- **Forecasting:** Monthly demand expected to grow by **12–15%** during peak seasons.
-
----
-
-## 💼 Business Value
-
-- Reduced manual reporting effort by **80%**
-- Delivered over **10 business KPIs**
-- Enables strategic decisions in logistics, marketing, and operations
-- Seamlessly supports BI tools and analyst workflows
-
+- **Sales Trends**: Revenue peaks during Q4, indicating seasonal demand spikes.
+- **Delivery Performance**: Slower deliveries correlate with lower review scores.
+- **Product Performance**: Categories like `beleza_saude` and `relógios_presentes` drive highest revenue.
+- **Churn Risk**: Customers with high wait times and low orders show churn tendencies.
+- **Customer Segments**: Segments based on frequency, recency, and spending help in targeting offers.
 
 ---
 
